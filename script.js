@@ -3,8 +3,7 @@ function retrievingLocalStorage(key) {
   let thisValue = localStorage.getItem(key);
   if (thisValue) {
     $(`#text${key}`).text(thisValue);
-  }
-}
+  }}
 // THIS FUNCTION CREATES ROW/COLUMN/AND APPENDS ROWS
 $(document).ready(function () {
     $("#currentDay").text(moment().format("dddd, MMMM Do"));
@@ -21,19 +20,19 @@ $(document).ready(function () {
     row.append(columnThree);
     $(".container").append(row);
 
-    // CALLING FUNCTION
-retrievingLocalStorage(i);
-  }
+// CALLING FUNCTION
+retrievingLocalStorage(i); }
+
 function dayOrNight(hours) {
     var dayEvening = hours >= 12 ? "pm" : "am";
     hours = hours % 12;
     hours = hours ? hours : 12;
-    return hours + dayEvening;
-  }
-  // CALLING FUNCTION
+    return hours + dayEvening; }
+
+// CALLING FUNCTION
 dayOrNight();
 
-  // CREATE NEW FUNCTION THAT CHNAGES COLORS/
+// CREATE NEW FUNCTION THAT CHANGES COLORS
 function differentColors() {
     var actualTimeNow = new Date().getHours();
     for (var i = 9; i < 18; i++) {
@@ -42,20 +41,16 @@ function differentColors() {
     $(`#text${i}`).addClass("present");
     } else if (actualTimeNow < $(`#${i}`).data("time")) {
     $(`#text${i}`).addClass("future");
-      }
-    }
-  }
+}}}
 
-  // CALLS FUNCTIONS
+// CALLS FUNCTIONS
 setInterval(function () {
-differentColors();
-  }, 1000);
+differentColors();}, 1000);
 
-  // PULLS FROM LOCAL STORAGE TO SAVE DATA WHEN PRESSING THE SAVE BUTTON KEY
-  var theSaveButton = $(".saveBtn");
+// PULLS FROM LOCAL STORAGE TO SAVE DATA WHEN PRESSING THE SAVE BUTTON KEY
+var theSaveButton = $(".saveBtn");
   theSaveButton.on("click", function () {
     let eventId = $(this).attr("id");
     let eventText = $(this).parent().siblings().children(".description").val();
     localStorage.setItem(eventId, eventText);
-  });
-});
+  });});
